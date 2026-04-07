@@ -1,0 +1,91 @@
+/* css/main.css — base layout, variables, typography */
+
+:root {
+  --bg-page:      #0a0d12;
+  --bg-panel:     #0f141c;
+  --bg-card:      #111820;
+  --border:       #1e2a3a;
+  --border-hover: #2a3d55;
+
+  --text-primary:   #d0d8e8;
+  --text-secondary: #7a90aa;
+  --text-muted:     #3a4a60;
+
+  --green:  #00e5a0;
+  --blue:   #4a9fd4;
+  --yellow: #ffd166;
+  --purple: #c77dff;
+  --orange: #ff8c42;
+  --red:    #ff6b35;
+  --gray:   #6c757d;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  --font-mono: 'Share Tech Mono', monospace;
+  --font-body: 'Barlow', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--bg-page);
+  color:       var(--text-primary);
+  font-family: var(--font-body);
+  font-size:   15px;
+  line-height: 1.5;
+  min-height:  100vh;
+}
+
+h1, h2, h3 { font-weight: 700; }
+
+/* ── Scrollbar ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar             { width: 6px; height: 6px; }
+::-webkit-scrollbar-track       { background: var(--bg-panel); }
+::-webkit-scrollbar-thumb       { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-hover); }
+
+/* ── Layout ────────────────────────────────────────────────────────── */
+body { padding: 0 18px 32px; max-width: 1600px; margin: 0 auto; }
+
+/* ── Panel ─────────────────────────────────────────────────────────── */
+.panel {
+  background:    var(--bg-panel);
+  border:        1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding:       18px;
+}
+
+.panel-header {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  margin-bottom:   14px;
+}
+
+.panel-title {
+  font-size:   0.9rem;
+  font-weight: 700;
+  color:       var(--text-primary);
+  letter-spacing: 0.5px;
+}
+
+.panel-badge {
+  font-family: var(--font-mono);
+  font-size:   0.7rem;
+  color:       var(--text-secondary);
+  background:  var(--bg-card);
+  padding:     3px 10px;
+  border-radius: 20px;
+  border:      1px solid var(--border);
+}
+
+/* ── Utility ───────────────────────────────────────────────────────── */
+.green  { color: var(--green);  }
+.blue   { color: var(--blue);   }
+.yellow { color: var(--yellow); }
+.purple { color: var(--purple); }
+.orange { color: var(--orange); }
+.red    { color: var(--red);    }
+.gray   { color: var(--gray);   }

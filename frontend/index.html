@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Construction CV Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="css/main.css"/>
+  <link rel="stylesheet" href="css/dashboard.css"/>
+</head>
+<body>
+
+  <!-- ── Header ─────────────────────────────────────────────────────── -->
+  <header class="header">
+    <div class="header-left">
+      <span class="header-icon">🏗</span>
+      <div>
+        <h1 class="header-title">CONSTRUCTION CV INTELLIGENCE</h1>
+        <p class="header-sub">REAL-TIME EQUIPMENT UTILIZATION &amp; ACTIVITY TRACKING</p>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="live-badge">
+        <span class="live-dot"></span>LIVE
+      </div>
+      <div id="clock" class="clock"></div>
+      <div class="health-row">
+        <span class="health-pill" id="health-db">DB</span>
+        <span class="health-pill" id="health-kafka">KAFKA</span>
+        <span class="health-pill" id="health-model">MODEL</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Fleet metrics ──────────────────────────────────────────────── -->
+  <section class="metrics-row" id="fleet-metrics">
+    <div class="metric-card">
+      <div class="metric-val" id="m-total">–</div>
+      <div class="metric-lbl">MACHINES TRACKED</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-val green" id="m-active">–</div>
+      <div class="metric-lbl">CURRENTLY ACTIVE</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-val yellow" id="m-util">–</div>
+      <div class="metric-lbl">AVG UTILISATION</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-val purple" id="m-fps">–</div>
+      <div class="metric-lbl">INFERENCE FPS</div>
+    </div>
+  </section>
+
+  <!-- ── Main grid ──────────────────────────────────────────────────── -->
+  <div class="main-grid">
+
+    <!-- Live feed -->
+    <section class="panel feed-panel">
+      <div class="panel-header">
+        <span class="panel-title">📹 Live Video Feed</span>
+        <span class="panel-badge" id="frame-counter">FRAME –</span>
+      </div>
+      <div class="feed-wrap">
+        <canvas id="feed-canvas"></canvas>
+        <div class="no-signal" id="no-signal">
+          <div class="no-signal-text">◈ NO SIGNAL ◈</div>
+          <div class="no-signal-sub">Waiting for CV service…</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Equipment cards -->
+    <section class="panel cards-panel">
+      <div class="panel-header">
+        <span class="panel-title">🚜 Equipment Status</span>
+        <span class="panel-badge" id="eq-count">0 machines</span>
+      </div>
+      <div id="equipment-cards"></div>
+    </section>
+
+  </div>
+
+  <!-- ── Analytics row ──────────────────────────────────────────────── -->
+  <div class="charts-grid">
+
+    <section class="panel">
+      <div class="panel-header">
+        <span class="panel-title">📊 Utilisation</span>
+      </div>
+      <canvas id="util-chart" height="200"></canvas>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <span class="panel-title">⚙ Activity Distribution</span>
+      </div>
+      <canvas id="activity-chart" height="200"></canvas>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <span class="panel-title">🤖 Model Info</span>
+      </div>
+      <div id="model-info-panel" class="model-info"></div>
+    </section>
+
+  </div>
+
+  <!-- ── Detection log ──────────────────────────────────────────────── -->
+  <section class="panel log-panel">
+    <div class="panel-header">
+      <span class="panel-title">📋 Detection Log</span>
+      <span class="panel-badge" id="log-count">0 entries</span>
+    </div>
+    <div class="table-wrap">
+      <table id="detection-table">
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Equipment</th>
+            <th>Type</th>
+            <th>State</th>
+            <th>Activity</th>
+            <th>Motion</th>
+            <th>LLM</th>
+          </tr>
+        </thead>
+        <tbody id="detection-tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <script src="js/api.js"></script>
+  <script src="js/stream.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/equipment.js"></script>
+  <script src="js/model.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
